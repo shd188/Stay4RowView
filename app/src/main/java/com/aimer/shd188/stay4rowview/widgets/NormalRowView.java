@@ -76,14 +76,15 @@ public class NormalRowView extends LinearLayout implements View.OnClickListener 
         }
     }
 
-    public void initializeData(RowDescriptor descriptor) {
+    public void initializeData(RowDescriptor descriptor, OnRowClickListener listener) {
         this.descriptor = descriptor;
+        this.listener = listener;
     }
 
     public void notifyDataChange() {
         if (descriptor != null) {
             mWidgetRowIconImg.setBackgroundResource(descriptor.imgRes);
-            mWidgetRowLabel.setText( descriptor.label);
+            mWidgetRowLabel.setText(descriptor.label);
             if (descriptor.action != null) {
                 setOnClickListener(this);
                 mWidgetRowActionImg.setVisibility(VISIBLE);

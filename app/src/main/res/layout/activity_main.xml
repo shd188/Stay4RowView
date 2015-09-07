@@ -5,8 +5,13 @@
               android:background="#229f9f9f"
                 tools:context=".MainActivity">
 
-    <com.aimer.shd188.stay4rowview.widgets.GroupView
+   <!-- <com.aimer.shd188.stay4rowview.widgets.GroupView
         android:id="@+id/groupView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>-->
+
+    <com.aimer.shd188.stay4rowview.widgets.ContainerView
+        android:id="@+id/containerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
