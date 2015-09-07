@@ -35,7 +35,6 @@ public class ContainerView extends LinearLayout {
     private void initView(Context context) {
         this.context=context;
         setOrientation(VERTICAL);
-
     }
 
     public void initData(List<GroupDescriptor> groupDescriptors,OnRowClickListener listener){
