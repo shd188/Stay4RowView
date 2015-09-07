@@ -1,6 +1,7 @@
 package com.aimer.shd188.stay4rowview.widgets;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import java.util.List;
 public class GroupView extends LinearLayout {
 
     private final Context context;
-    private List<RowDescriptor> descriptors;
+    private List<BaseRowDescriptor> descriptors;
     private OnRowClickListener listener;
 
     public GroupView(Context context) {
@@ -35,27 +36,35 @@ public class GroupView extends LinearLayout {
         this.context = context;
     }
 
-    public void initView(List<RowDescriptor> descriptors, OnRowClickListener listener) {
+    public void initView(List<BaseRowDescriptor> descriptors, OnRowClickListener listener) {
         setOrientation(VERTICAL);
         this.descriptors = descriptors;
         this.listener = listener;
     }
 
     public void notifyDataChanged() {
-        NormalRowView rowView = null;
         if (descriptors != null && descriptors.size() > 0) {
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
+            BaseRowDescriptor baseRowDescriptor=null;
+            BaseRowView baseRowView=null;
             for (int i = 0; i < descriptors.size(); i++) {
-                rowView = new NormalRowView(context);
-                rowView.initializeData(descriptors.get(i), listener);
-                rowView.notifyDataChange();
-                addView(rowView);
+                baseRowDescriptor=descriptors.get(i);
+                if (baseRowDescriptor instanceof RowDescriptor) {
+                    baseRowView = new NormalRowView(context);
+
+                }else if (baseRowDescriptor instanceof ProfileRowDescriptor){
+                    baseRowView=new ProfileRowView(context);
+                }
+                baseRowView.initData(baseRowDescriptor, listener);
+                baseRowView.notifyDataChange();
+                addView(baseRowView);
                 if (i != descriptors.size() - 1) {
                     View view = new View(context);
                     view.setBackgroundColor(getResources().getColor(R.color.line));
                     addView(view, params);
                 }
             }
+            setBackgroundColor(Color.WHITE);
         } else {
             setVisibility(GONE);
         }

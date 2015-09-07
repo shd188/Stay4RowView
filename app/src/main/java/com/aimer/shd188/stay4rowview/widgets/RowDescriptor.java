@@ -1,11 +1,9 @@
 package com.aimer.shd188.stay4rowview.widgets;
 
-import com.aimer.shd188.stay4rowview.ActionEnum;
-
 /**
  * Created by shd188 on 15/9/5.
  */
-public class RowDescriptor {
+public class RowDescriptor extends BaseRowDescriptor{
     public int imgRes;
     public String label;
     public ActionEnum action;

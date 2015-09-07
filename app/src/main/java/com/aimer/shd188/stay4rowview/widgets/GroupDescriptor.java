@@ -6,9 +6,9 @@ import java.util.List;
  * Created by shd on 2015/9/7.
  */
 public class GroupDescriptor {
-    public List<RowDescriptor> rowDescriptors;
+    public List<BaseRowDescriptor> rowDescriptors;
 
-    public GroupDescriptor(List<RowDescriptor> rowDescriptors) {
+    public GroupDescriptor(List<BaseRowDescriptor> rowDescriptors) {
         this.rowDescriptors = rowDescriptors;
     }
 }

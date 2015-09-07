@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aimer.shd188.stay4rowview.OnRowClickListener;
@@ -14,7 +13,7 @@ import com.aimer.shd188.stay4rowview.R;
 /**
  * Created by shd188 on 15/9/1.
  */
-public class NormalRowView extends LinearLayout implements View.OnClickListener {
+public class NormalRowView extends BaseRowView implements View.OnClickListener {
 
     private final Context context;
     private ImageView mWidgetRowIconImg;
@@ -39,6 +38,12 @@ public class NormalRowView extends LinearLayout implements View.OnClickListener 
         super(context, attrs, defStyleAttr);
         this.context = context;
         initView();
+    }
+
+    @Override
+    public void initData(BaseRowDescriptor descriptor, OnRowClickListener listener) {
+        this.descriptor = (RowDescriptor)descriptor;
+        this.listener = listener;
     }
 
     private void initView() {
@@ -76,11 +81,7 @@ public class NormalRowView extends LinearLayout implements View.OnClickListener 
         }
     }
 
-    public void initializeData(RowDescriptor descriptor, OnRowClickListener listener) {
-        this.descriptor = descriptor;
-        this.listener = listener;
-    }
-
+    @Override
     public void notifyDataChange() {
         if (descriptor != null) {
             mWidgetRowIconImg.setBackgroundResource(descriptor.imgRes);

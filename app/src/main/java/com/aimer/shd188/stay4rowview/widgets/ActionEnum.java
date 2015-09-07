@@ -1,4 +1,4 @@
-package com.aimer.shd188.stay4rowview;
+package com.aimer.shd188.stay4rowview.widgets;
 
 /**
  * Created by shd188 on 15/9/1.
